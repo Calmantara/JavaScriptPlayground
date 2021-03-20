@@ -1,0 +1,55 @@
+version: "3.9"
+services:
+  web1:
+    image: coconcept/nodeapp:latest
+    ports:
+      - "2000:2000"
+    environment:
+      - PORT=2000
+    networks:
+      loadbalancer:
+        ipv4_address: 10.0.0.2
+  web2:
+    image: coconcept/nodeapp:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    networks:
+      loadbalancer:
+        ipv4_address: 10.0.0.3
+  web3:
+    image: coconcept/nodeapp:latest
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+    networks:
+      loadbalancer:
+        ipv4_address: 10.0.0.4
+  web4:
+    image: coconcept/nodeapp:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    networks:
+      loadbalancer:
+        ipv4_address: 10.0.0.5
+  lb:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      loadbalancer:
+        ipv4_address: 10.0.0.6
+
+networks:
+  loadbalancer:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.0.0.0/16
+         gateway: 10.0.0.1
