@@ -1,5 +1,7 @@
 version: "3.9"
 services:
+
+# web server and loadbalancer
   web1:
     image: coconcept/nodeapp:latest
     ports:

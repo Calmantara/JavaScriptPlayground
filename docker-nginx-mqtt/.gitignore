@@ -1,0 +1,3 @@
+/web-server/node_modules
+/mqtt-publisher/node_modules
+/mqtt-subscriber/node_modules

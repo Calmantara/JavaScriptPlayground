@@ -1,0 +1,16 @@
+{
+  "name": "mqtt-publiser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mqtt-publisher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mqtt": "^4.2.6"
+  }
+}
