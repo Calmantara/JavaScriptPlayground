@@ -10,7 +10,9 @@ const client = mqtt.connect(
   }
 );
 
-client.on("connect", (err) => {});
+client.on("connect", (res) => {
+  console.log(res);
+});
 
 const loop = async () => {
   let index = 0;
@@ -20,7 +22,7 @@ const loop = async () => {
         "v1/prog1/temp",
         JSON.stringify({
           id: index,
-          client: process.env.CLIENT,
+          client: process.env.CLIENT || config.clientName,
           sensor: "Temperature",
           values: Math.random(),
         })
@@ -29,7 +31,7 @@ const loop = async () => {
         "v1/prog1/hum",
         JSON.stringify({
           id: index,
-          client: process.env.CLIENT,
+          client: process.env.CLIENT || config.clientName,
           sensor: "Humidity",
           values: Math.random(),
         })

@@ -1,5 +1,5 @@
 {
-    "scheme":"ws",
+    "scheme":"mqtt",
     "server":"127.0.0.1",
-    "port":"9001"
+    "port":"1883"
 }
