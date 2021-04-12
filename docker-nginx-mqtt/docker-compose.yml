@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-# broker with loadbalancer
+  # broker with loadbalancer
   mosquitto1:
     image: eclipse-mosquitto:latest
     ports:
@@ -24,14 +24,14 @@ services:
   # publiser
   pub1:
     build: "./mqtt-publisher/"
-    environment: 
+    environment:
       - CLIENT=container1
     networks:
       mqtt-loadbalancer:
         ipv4_address: 10.10.0.9
   pub2:
     build: "./mqtt-publisher/"
-    environment: 
+    environment:
       - CLIENT=container2
     networks:
       mqtt-loadbalancer:
@@ -49,15 +49,15 @@ services:
         ipv4_address: 10.10.0.12
 
 networks:
-  loadbalancer:
-    driver: bridge
-    ipam:
-     config:
-       - subnet: 10.0.0.0/8
-         gateway: 10.0.0.1
+  # loadbalancer:
+  #   driver: bridge
+  #   ipam:
+  #    config:
+  #      - subnet: 10.0.0.0/8
+  #        gateway: 10.0.0.1
   mqtt-loadbalancer:
     driver: bridge
     ipam:
-     config:
-       - subnet: 10.0.0.0/8
-         gateway: 10.10.0.1
+      config:
+        - subnet: 10.10.0.0/8
+          gateway: 10.10.0.1
