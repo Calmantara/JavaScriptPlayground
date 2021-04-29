@@ -1,6 +1,6 @@
 {
     "scheme":"mqtt",
-    "server":"127.0.0.1",
+    "server":"broker.hivemq.com",
     "port":"1883",
     "clientName":"client1"
 }

@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  web1:
+    image: training/nodeimage:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - CONTAINERNAME=web1
+    networks:
+      vnet:
+        ipv4_address: 10.0.0.2
+  web2:
+    image: training/nodeimage:latest
+    ports:
+      - "3002:3000"
+    environment:
+      - CONTAINERNAME=web2
+    networks:
+      vnet:
+        ipv4_address: 10.0.0.3
+  web3:
+    image: training/nodeimage:latest
+    ports:
+      - "3003:3000"
+    environment:
+      - CONTAINERNAME=web3
+    networks:
+      vnet:
+        ipv4_address: 10.0.0.4
+
+networks:
+  vnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/16
+          gateway: 10.0.0.1
